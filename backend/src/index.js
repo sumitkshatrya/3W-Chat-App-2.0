@@ -16,11 +16,14 @@ const PORT = process.env.PORT || 5001;
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ limit: "100mb", extended: true }));
 app.use(cookieParser());
+
+// ✅ Correct CORS setup
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // local frontend
-      "https://3-w-chat-app-2-0-git-main-sumit-kumars-projects-e897095f.vercel.app/login"
+      "http://localhost:5173", // local dev
+      "https://3-w-chat-app-2-0.vercel.app", // production frontend
+      "https://3-w-chat-app-2-0-git-main-sumit-kumars-projects-e897095f.vercel.app" // preview deploys
     ],
     credentials: true,
     exposedHeaders: ["set-cookie"],
@@ -33,7 +36,6 @@ app.use("/api/messages", messageRoute);
 
 // Start server + DB
 server.listen(PORT, () => {
-  console.log(" Server is running on Port:", PORT);
+  console.log("✅ Server is running on Port:", PORT);
   connectDB();
 });
- 

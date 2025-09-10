@@ -3,11 +3,11 @@ import { axiosInstance } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
+// ✅ Socket base URL (no /api needed)
 const BASE_URL =
   import.meta.env.MODE === "development"
     ? "http://localhost:5001"
-     : "https://threew-chat-app-2-0.onrender.com";
-
+    : "https://threew-chat-app-2-0.onrender.com";
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
@@ -84,8 +84,8 @@ export const useAuthStore = create((set, get) => ({
       set({ authUser: res.data });
       toast.success("Profile updated successfully");
     } catch (error) {
-      console.log("error in update profile:", error);
-      toast.error(error.response.data.message);
+      console.log("Error in update profile:", error);
+      toast.error(error.response?.data?.message || "Update failed");
     } finally {
       set({ isUpdatingProfile: false });
     }

@@ -11,7 +11,8 @@ const userSocketMap = {}; // { userId: socketId }
 const io = new Server(server, {
   cors: {
     origin: [
-      "http://localhost:5173"
+      "http://localhost:5173",
+      "https://3-w-chat-app-2-0-git-main-sumit-kumars-projects-e897095f.vercel.app/"
     ],
     credentials: true,
   },

@@ -20,7 +20,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", // local frontend
-      // for deployed frontend
+      "https://3-w-chat-app-2-0-git-main-sumit-kumars-projects-e897095f.vercel.app/login"
     ],
     credentials: true,
     exposedHeaders: ["set-cookie"],
